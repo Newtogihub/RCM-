@@ -111,7 +111,7 @@ const Login = () => {
                 </div>
 
                 <p className="text-center text-xs text-slate-400 mt-6 relative z-10">
-                    &copy; 2026 RCM Pulse Intelligence. All rights reserved.
+                    &copy; 2026 RCM Pulse Intelligence. All Rights Reserved.
                 </p>
             </motion.div>
         </div>
