@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  rcm-platform:
+    build: .
+    image: rcm-platform-v2:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - n8n
+      - postgres
+
   postgres:
     image: postgres:16
     restart: always
