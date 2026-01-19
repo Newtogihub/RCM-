@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Lightbulb, ArrowUpRight, CheckCircle, Clock, RefreshCw, AlertTriangle, Play, ShieldAlert, TrendingDown } from 'lucide-react';
 import Card from '../components/ui/Card';
