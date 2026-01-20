@@ -9,49 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug Secrets
-        run: |
-          echo "=== Checking VPS_HOST ==="
-          if [ -n "$VPS_HOST" ]; then
-            echo "✅ VPS_HOST is set (${#VPS_HOST} chars)"
-          else
-            echo "❌ VPS_HOST is empty"
-          fi
-          
-          echo ""
-          echo "=== Checking VPS_USER ==="
-          if [ -n "$VPS_USER" ]; then
-            echo "✅ VPS_USER is set (${#VPS_USER} chars)"
-          else
-            echo "❌ VPS_USER is empty"
-          fi
-          
-          echo ""
-          echo "=== Checking VPS_SSH_KEY ==="
-          if [ -n "$VPS_SSH_KEY" ]; then
-            echo "✅ VPS_SSH_KEY is set"
-            echo "   Length: ${#VPS_SSH_KEY} characters"
-            echo "   Lines: $(echo "$VPS_SSH_KEY" | wc -l)"
-            
-            if echo "$VPS_SSH_KEY" | grep -q "BEGIN OPENSSH PRIVATE KEY"; then
-              echo "   ✅ Has BEGIN header"
-            else
-              echo "   ❌ Missing BEGIN header"
-            fi
-            
-            if echo "$VPS_SSH_KEY" | grep -q "END OPENSSH PRIVATE KEY"; then
-              echo "   ✅ Has END header"
-            else
-              echo "   ❌ Missing END header"
-            fi
-          else
-            echo "❌ VPS_SSH_KEY is empty"
-          fi
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-          VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
-
       - name: Deploy to Hostinger VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
